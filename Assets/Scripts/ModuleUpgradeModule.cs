@@ -2,14 +2,9 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class ModuleUpgradeModule : BaseModule<string, string>
+public class ModuleUpgradeModule : BaseModule
 {
-    protected override bool CheckAnswer()
-    {
-        throw new System.NotImplementedException();
-    }
-
-    protected override void GenerateProblem()
+    public override void GenerateProblem()
     {
         throw new System.NotImplementedException();
     }

@@ -1,14 +1,9 @@
 using System;
 using System.Collections.Generic;
 
-public class ForgotPasswordModule : BaseModule<string, string>
+public class ForgotPasswordModule : BaseModule
 {
-    protected override bool CheckAnswer()
-    {
-        throw new System.NotImplementedException();
-    }
-
-    protected override void GenerateProblem()
+    public override void GenerateProblem()
     {
         Random rand = new Random();
         TimeSpan start = TimeSpan.FromHours(0);

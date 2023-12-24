@@ -2,13 +2,20 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public abstract class BaseModule<T, K>
+public abstract class BaseModule
 {
-    public T problem { get; protected set; }
+    public string problem { get; protected set; }
 
-    public K solution { get; protected set; }
+    public abstract void GenerateProblem();
 
-    protected abstract void GenerateProblem();
-
-    protected abstract bool CheckAnswer();
+    public bool CheckAnswer(string answer) {
+        if (answer.Equals(problem))
+        {
+            return true;
+        }
+        else
+        {
+            return false;
+        }
+    }
 }
