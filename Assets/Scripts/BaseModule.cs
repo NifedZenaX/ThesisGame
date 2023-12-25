@@ -5,17 +5,9 @@ using UnityEngine;
 public abstract class BaseModule
 {
     public string problem { get; protected set; }
+    public string solution { get; protected set; }
 
     public abstract void GenerateProblem();
 
-    public bool CheckAnswer(string answer) {
-        if (answer.Equals(problem))
-        {
-            return true;
-        }
-        else
-        {
-            return false;
-        }
-    }
+    public abstract bool CheckAnswer(string answer);
 }
