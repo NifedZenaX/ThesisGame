@@ -9,7 +9,7 @@ public class WiresModule : BaseModule
         throw new System.NotImplementedException();
     }
 
-    public override void GenerateProblem()
+    public override void GenerateProblemAndSolution()
     {
         throw new System.NotImplementedException();
     }

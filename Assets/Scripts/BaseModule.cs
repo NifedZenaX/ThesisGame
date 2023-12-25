@@ -7,7 +7,7 @@ public abstract class BaseModule
     public string problem { get; protected set; }
     public string solution { get; protected set; }
 
-    public abstract void GenerateProblem();
+    public abstract void GenerateProblemAndSolution();
 
     public abstract bool CheckAnswer(string answer);
 }

@@ -16,7 +16,7 @@ public class GameModule : MonoBehaviour
 
     public string GetProblem()
     {
-        module.GenerateProblem();
+        module.GenerateProblemAndSolution();
         return module.problem;
     }
 
