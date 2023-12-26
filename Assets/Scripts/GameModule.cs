@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class GameModule : MonoBehaviour
 {
+    [SerializeField]
     private ModuleMapping.ModuleTypeEnum moduleType;
 
     private BaseModule module;
@@ -12,6 +13,15 @@ public class GameModule : MonoBehaviour
     {
         //TODO: generate random number between 0-enumCount to randomly generate module
         module = (BaseModule)ModuleMapping.moduleMapping[moduleType];
+    }
+
+    private void Update()
+    {
+        if (Input.anyKeyDown)
+        {
+            module.GenerateProblemAndSolution();
+            Debug.Log("Problem: " + module.problem + " and Solution: " + module.solution);
+        }
     }
 
     public string GetProblem()
