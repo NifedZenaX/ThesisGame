@@ -2,11 +2,6 @@ using System;
 
 public class ForgotPasswordModule : BaseModule
 {
-    public override bool CheckAnswer(string answer)
-    {
-        throw new NotImplementedException();
-    }
-
     public override void GenerateProblemAndSolution()
     {
         #region Generate Problem

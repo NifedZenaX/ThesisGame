@@ -9,5 +9,7 @@ public abstract class BaseModule
 
     public abstract void GenerateProblemAndSolution();
 
-    public abstract bool CheckAnswer(string answer);
+    public bool CheckAnswer(string answer) {
+        return (answer.Equals(solution)) ? true : false;
+    }
 }
