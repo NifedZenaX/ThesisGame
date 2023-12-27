@@ -1,11 +1,24 @@
-using System.Collections;
+using System;
 using System.Collections.Generic;
-using UnityEngine;
 
 public class WiresModule : BaseModule
 {
     public override void GenerateProblemAndSolution()
     {
-        throw new System.NotImplementedException();
+        #region Generate Problem
+        Random rand = new Random();
+        int totalWires = rand.Next(1, 5);
+        List<WireColorEnum> wires = new List<WireColorEnum>();
+
+        Array wireEnums = Enum.GetValues(typeof(WireColorEnum));
+        for (int i = 0; i < totalWires; i++)
+        {
+            wires.Add((WireColorEnum)wireEnums.GetValue(rand.Next(wireEnums.Length)));
+        }
+        #endregion
+
+        #region Generate Solution
+
+        #endregion
     }
 }
