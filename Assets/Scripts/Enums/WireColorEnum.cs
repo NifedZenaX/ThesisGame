@@ -1,7 +1,6 @@
 public enum WireColorEnum
 {
     Red,
-    Yellow,
-    Blue,
-    Green
+    Green,
+    Blue
 }

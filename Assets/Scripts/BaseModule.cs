@@ -4,12 +4,12 @@ using UnityEngine;
 
 public abstract class BaseModule
 {
-    public string problem { get; protected set; }
-    public string solution { get; protected set; }
+    public object problem { get; protected set; }
+    public object solution { get; protected set; }
 
     public abstract void GenerateProblemAndSolution();
 
-    public bool CheckAnswer(string answer) {
-        return (answer.Equals(solution)) ? true : false;
+    public bool CheckAnswer(object answer) {
+        return answer.Equals(solution);
     }
 }

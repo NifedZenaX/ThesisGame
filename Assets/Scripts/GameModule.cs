@@ -24,10 +24,11 @@ public class GameModule : MonoBehaviour
         }
     }
 
+    //TODO: may need to change to support different types
     public string GetProblem()
     {
         module.GenerateProblemAndSolution();
-        return module.problem;
+        return (string)module.problem;
     }
 
     public void SubmitAnswer(string answer)
