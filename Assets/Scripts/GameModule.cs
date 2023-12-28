@@ -20,7 +20,7 @@ public class GameModule : MonoBehaviour
         if (Input.anyKeyDown)
         {
             module.GenerateProblemAndSolution();
-            Debug.Log("Problem: " + module.problem + " and Solution: " + module.solution);
+            //Debug.Log("Problem: " + module.problem.ToString() + " and Solution: " + module.solution.ToString());
         }
     }
 
