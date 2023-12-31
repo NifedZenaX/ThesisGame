@@ -20,14 +20,15 @@ public class GameModule : MonoBehaviour
         if (Input.anyKeyDown)
         {
             module.GenerateProblemAndSolution();
-            Debug.Log("Problem: " + module.problem + " and Solution: " + module.solution);
+            //Debug.Log("Problem: " + module.problem.ToString() + " and Solution: " + module.solution.ToString());
         }
     }
 
+    //TODO: may need to change to support different types
     public string GetProblem()
     {
         module.GenerateProblemAndSolution();
-        return module.problem;
+        return (string)module.problem;
     }
 
     public void SubmitAnswer(string answer)
