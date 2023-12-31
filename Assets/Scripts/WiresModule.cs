@@ -42,7 +42,7 @@ public class WiresModule : BaseModule
             {
                 if(numbers[i].color == wires[2])
                 {
-                    SetCorrectAnswer(numbers[i]);
+                    SetCorrectAnswer(numbers, i);
                 }
             }
         }
@@ -50,9 +50,9 @@ public class WiresModule : BaseModule
         {
             for (int i = 0; i < totalNumbers; i++)
             {
-                if(numbers[i].number % 2 == 1)
+                if (numbers[i].number % 2 == 1)
                 {
-                    SetCorrectAnswer(numbers[i]);
+                    SetCorrectAnswer(numbers, i);
                 }
             }
             numbers.Sort((x, y) => x.number.CompareTo(y.number));
@@ -83,7 +83,7 @@ public class WiresModule : BaseModule
                 }
                 int index = distances.FindIndex(x => x == closest);
 
-                SetCorrectAnswer(numbers[index]);
+                SetCorrectAnswer(numbers, index);
             }
         }
         else
@@ -101,7 +101,7 @@ public class WiresModule : BaseModule
             {
                 if(numbers[i].number % mostColor == 0)
                 {
-                    SetCorrectAnswer(numbers[i]);
+                    SetCorrectAnswer(numbers, i);
                 }
             }
             numbers.Sort((x, y) => x.number.CompareTo(y.number));
@@ -116,10 +116,10 @@ public class WiresModule : BaseModule
         return (WireColorEnum)wireEnums.GetValue(rand.Next(wireEnums.Length));
     }
 
-    private void SetCorrectAnswer(WireNumber number)
+    private void SetCorrectAnswer(List<WireNumber> number, int index)
     {
-        WireNumber n = number;
+        WireNumber n = number[index];
         n.isAnswer = true;
-        number = n;
+        number[index] = n;
     }
 }
