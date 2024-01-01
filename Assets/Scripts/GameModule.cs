@@ -25,10 +25,10 @@ public class GameModule : MonoBehaviour
     }
 
     //TODO: may need to change to support different types
-    public string GetProblem()
+    public object GetProblem()
     {
         module.GenerateProblemAndSolution();
-        return (string)module.problem;
+        return module.problem;
     }
 
     public void SubmitAnswer(string answer)
