@@ -54,7 +54,7 @@ MonoBehaviour:
     uiScaleMode: 0
     referenceResolution: {x: 0, y: 0}
   - tag: Forgot_Password
-    prefab: {fileID: 4567813187764643527, guid: 8f063f9c65613744097fdc63353e43e3, type: 3}
+    prefab: {fileID: 5242033911359588583, guid: bbff908f438db5f499cbf92a494b546d, type: 3}
     size: 1
     isUIElement: 0
     renderMode: 0
