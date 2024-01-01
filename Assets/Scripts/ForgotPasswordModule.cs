@@ -1,7 +1,9 @@
 using System;
+using System.Collections.Generic;
 
 public class ForgotPasswordModule : BaseModule
 {
+    double hourDegree, minuteDegree;
     public override void GenerateProblemAndSolution()
     {
         #region Generate Problem
@@ -12,7 +14,10 @@ public class ForgotPasswordModule : BaseModule
         int mins = rand.Next(maxMins);
         TimeSpan time = start.Add(TimeSpan.FromMinutes(mins));
 
-        problem = time.ToString();
+        hourDegree = time.Hours % 12 * 30 + time.Minutes * 0.5;
+        minuteDegree = time.Minutes * 6;
+
+        problem = new List<object>() { time.ToString(), hourDegree, minuteDegree };
         #endregion
 
         #region Generate Solution
@@ -32,9 +37,6 @@ public class ForgotPasswordModule : BaseModule
 
         tensMinute = minute / 10;
         onesMinute = minute % 10;
-
-        double hourDegree = time.Hours % 12 * 30 + time.Minutes * 0.5;
-        double minuteDegree = time.Minutes * 6;
 
         if((hourDegree - minuteDegree) >= 0)
         {
