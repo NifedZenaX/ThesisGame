@@ -16,7 +16,7 @@ public abstract class BaseModule
     public abstract void GenerateProblem();
     public abstract void GenerateSolution();
 
-    public bool CheckAnswer(object answer) {
+    public virtual bool CheckAnswer(object answer) {
         return answer.Equals(solution);
     }
 }
