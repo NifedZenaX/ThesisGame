@@ -3,7 +3,11 @@
 --- !u!78 &1
 TagManager:
   serializedVersion: 2
-  tags: []
+  tags:
+  - Shapes_Numbers
+  - Wires
+  - Module_Upgrade
+  - Forgot_Password
   layers:
   - Default
   - TransparentFX
