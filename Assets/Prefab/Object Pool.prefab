@@ -1,0 +1,84 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!1 &5566009140421458330
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 2583552310220200049}
+  - component: {fileID: 783882856829647009}
+  m_Layer: 0
+  m_Name: Object Pool
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!224 &2583552310220200049
+RectTransform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5566009140421458330}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_AnchorMin: {x: 0.5, y: 0.5}
+  m_AnchorMax: {x: 0.5, y: 0.5}
+  m_AnchoredPosition: {x: -413.5, y: -232.6}
+  m_SizeDelta: {x: 100, y: 100}
+  m_Pivot: {x: 0.5, y: 0.5}
+--- !u!114 &783882856829647009
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5566009140421458330}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: af508bf569dccda479b59fa38aada6ac, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  pools:
+  - tag: Wires
+    prefab: {fileID: 5250999143832177343, guid: 919fa69fad7752944b7516e06d3f1781, type: 3}
+    size: 1
+    isUIElement: 0
+    renderMode: 0
+    camera: {fileID: 0}
+    uiScaleMode: 0
+    referenceResolution: {x: 0, y: 0}
+  - tag: Forgot_Password
+    prefab: {fileID: 5242033911359588583, guid: bbff908f438db5f499cbf92a494b546d, type: 3}
+    size: 1
+    isUIElement: 0
+    renderMode: 0
+    camera: {fileID: 0}
+    uiScaleMode: 0
+    referenceResolution: {x: 0, y: 0}
+  - tag: Module_Upgrade
+    prefab: {fileID: 8128873982048669988, guid: 741500b166300994bb786b26a8edc415, type: 3}
+    size: 1
+    isUIElement: 0
+    renderMode: 0
+    camera: {fileID: 0}
+    uiScaleMode: 0
+    referenceResolution: {x: 0, y: 0}
+  - tag: Shapes_Numbers
+    prefab: {fileID: 5838238139259988722, guid: 9afc17154a8225f4a95478311eee335a, type: 3}
+    size: 1
+    isUIElement: 0
+    renderMode: 0
+    camera: {fileID: 0}
+    uiScaleMode: 0
+    referenceResolution: {x: 0, y: 0}
