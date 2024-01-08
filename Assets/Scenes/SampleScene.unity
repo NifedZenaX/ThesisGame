@@ -123,59 +123,11 @@ NavMeshSettings:
     debug:
       m_Flags: 0
   m_NavMeshData: {fileID: 0}
-<<<<<<< Updated upstream
---- !u!1 &14478385
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 14478387}
-  - component: {fileID: 14478386}
-  m_Layer: 0
-  m_Name: GameObject
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!114 &14478386
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 14478385}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: a1a8cd0d282f252488058d1629cb435f, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  moduleType: 1
---- !u!4 &14478387
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 14478385}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -0.039417036, y: -0.3380818, z: 0.010434147}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
-  m_Children: []
-  m_Father: {fileID: 0}
-  m_RootOrder: 1
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-=======
 --- !u!224 &242880662 stripped
 RectTransform:
   m_CorrespondingSourceObject: {fileID: 3547906132859979251, guid: bbff908f438db5f499cbf92a494b546d, type: 3}
   m_PrefabInstance: {fileID: 1538387330}
   m_PrefabAsset: {fileID: 0}
->>>>>>> Stashed changes
 --- !u!1 &519420028
 GameObject:
   m_ObjectHideFlags: 0
@@ -260,8 +212,6 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-<<<<<<< Updated upstream
-=======
 --- !u!1 &618853706
 GameObject:
   m_ObjectHideFlags: 0
@@ -818,6 +768,10 @@ PrefabInstance:
     - target: {fileID: 8434976144728802988, guid: 919fa69fad7752944b7516e06d3f1781, type: 3}
       propertyPath: m_Name
       value: Middle
+      objectReference: {fileID: 0}
+    - target: {fileID: 8552738049362140721, guid: 919fa69fad7752944b7516e06d3f1781, type: 3}
+      propertyPath: m_Name
+      value: Nipples
       objectReference: {fileID: 0}
     - target: {fileID: 9194118926529755063, guid: 919fa69fad7752944b7516e06d3f1781, type: 3}
       propertyPath: m_AnchorMax.y
@@ -1985,4 +1939,3 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: a7b750f1eef41a4478370e33ec17a841, type: 3}
->>>>>>> Stashed changes
