@@ -1,16 +1,17 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using TMPro;
 
 public class Timer : MonoBehaviour
 {
     [SerializeField] private int minute;
     [SerializeField] private float second;
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
+
+    [SerializeField] private TextMeshProUGUI timerText;
+
+    private string minuteText;
+    private string secondText;
 
     // Update is called once per frame
     void Update()
@@ -23,7 +24,9 @@ public class Timer : MonoBehaviour
                 second = 60;
             }
             second -= Time.deltaTime;
-            Debug.Log("Minute: " + minute + ", Second: " + (int)second);
+            minuteText = (minute < 10) ? "0" + minute : minute.ToString();
+            secondText = (second < 10) ? "0" + (int)second : ((int)second).ToString();
+            timerText.text = minuteText + ":" + secondText;
         }
         else
         {
