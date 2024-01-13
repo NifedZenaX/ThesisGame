@@ -4,6 +4,8 @@ using System.Collections.Generic;
 public class WiresModule : BaseModule
 {
     Random rand = new Random();
+    int totalWires;
+    List<WireColorEnum> wires;
     public struct WireNumber
     {
         public WireColorEnum color;
@@ -11,19 +13,32 @@ public class WiresModule : BaseModule
         public bool isAnswer;
     }
 
-    public override void GenerateProblemAndSolution()
+    private WireColorEnum GetRandomColor()
     {
-        #region Generate Problem
-        int totalWires = rand.Next(3, 6);
-        List<WireColorEnum> wires = new List<WireColorEnum>();
+        Array wireEnums = Enum.GetValues(typeof(WireColorEnum));
+        return (WireColorEnum)wireEnums.GetValue(rand.Next(wireEnums.Length));
+    }
+
+    private void SetCorrectAnswer(List<WireNumber> number, int index)
+    {
+        WireNumber n = number[index];
+        n.isAnswer = true;
+        number[index] = n;
+    }
+
+    public override void GenerateProblem()
+    {
+        totalWires = rand.Next(3, 6);
+        wires = new List<WireColorEnum>();
         for (int i = 0; i < totalWires; i++)
         {
             wires.Add(GetRandomColor());
         }
         problem = wires;
-        #endregion
+    }
 
-        #region Generate Solution
+    public override void GenerateSolution()
+    {
         int totalNumbers = 6;
         List<WireNumber> numbers = new List<WireNumber>();
         for (int i = 0; i < totalNumbers; i++)
@@ -36,17 +51,17 @@ public class WiresModule : BaseModule
         }
 
 
-        if(totalWires == 4)
+        if (totalWires == 4)
         {
             for (int i = 0; i < totalNumbers; i++)
             {
-                if(numbers[i].color == wires[2])
+                if (numbers[i].color == wires[2])
                 {
                     SetCorrectAnswer(numbers, i);
                 }
             }
         }
-        else if(wires[0] == WireColorEnum.Green)
+        else if (wires[0] == WireColorEnum.Green)
         {
             for (int i = 0; i < totalNumbers; i++)
             {
@@ -57,7 +72,7 @@ public class WiresModule : BaseModule
             }
             numbers.Sort((x, y) => x.number.CompareTo(y.number));
         }
-        else if(totalWires == 3)
+        else if (totalWires == 3)
         {
             int average = 0;
             for (int i = 0; i < totalNumbers; i++)
@@ -74,10 +89,10 @@ public class WiresModule : BaseModule
                 distances.Add(distance);
             }
 
-            for(int i = 0; i < 3; i++)
+            for (int i = 0; i < 3; i++)
             {
                 double closest = 999;
-                for(int j = 0; j < totalNumbers; j++)
+                for (int j = 0; j < totalNumbers; j++)
                 {
                     if (distances[j] < closest && !numbers[j].isAnswer) closest = distances[j];
                 }
@@ -99,7 +114,7 @@ public class WiresModule : BaseModule
             int mostColor = totalWireColors[totalWireColors.Count - 1];
             for (int i = 0; i < totalNumbers; i++)
             {
-                if(numbers[i].number % mostColor == 0)
+                if (numbers[i].number % mostColor == 0)
                 {
                     SetCorrectAnswer(numbers, i);
                 }
@@ -107,19 +122,5 @@ public class WiresModule : BaseModule
             numbers.Sort((x, y) => x.number.CompareTo(y.number));
         }
         solution = numbers;
-        #endregion
-    }
-
-    private WireColorEnum GetRandomColor()
-    {
-        Array wireEnums = Enum.GetValues(typeof(WireColorEnum));
-        return (WireColorEnum)wireEnums.GetValue(rand.Next(wireEnums.Length));
-    }
-
-    private void SetCorrectAnswer(List<WireNumber> number, int index)
-    {
-        WireNumber n = number[index];
-        n.isAnswer = true;
-        number[index] = n;
     }
 }

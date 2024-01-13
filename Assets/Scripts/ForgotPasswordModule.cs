@@ -4,23 +4,25 @@ using System.Collections.Generic;
 public class ForgotPasswordModule : BaseModule
 {
     double hourDegree, minuteDegree;
-    public override void GenerateProblemAndSolution()
+    TimeSpan time;
+
+    public override void GenerateProblem()
     {
-        #region Generate Problem
         Random rand = new Random();
         TimeSpan start = TimeSpan.FromHours(0);
         TimeSpan end = TimeSpan.FromHours(23);
-        int maxMins = (int) (end - start).TotalMinutes;
+        int maxMins = (int)(end - start).TotalMinutes;
         int mins = rand.Next(maxMins);
-        TimeSpan time = start.Add(TimeSpan.FromMinutes(mins));
+        time = start.Add(TimeSpan.FromMinutes(mins));
 
         hourDegree = time.Hours % 12 * 30 + time.Minutes * 0.5;
         minuteDegree = time.Minutes * 6;
 
         problem = new List<object>() { time.ToString(), hourDegree, minuteDegree };
-        #endregion
+    }
 
-        #region Generate Solution
+    public override void GenerateSolution()
+    {
         int tensHour, tensMinute, onesHour, onesMinute, hour, minute;
         if (time.Minutes % 2 == 0)
         {
@@ -38,13 +40,13 @@ public class ForgotPasswordModule : BaseModule
         tensMinute = minute / 10;
         onesMinute = minute % 10;
 
-        if((hourDegree - minuteDegree) >= 0)
+        if ((hourDegree - minuteDegree) >= 0)
         {
             solution = onesMinute.ToString() + tensMinute.ToString() + onesHour.ToString() + tensHour.ToString();
         }
         else
         {
-            if(hourDegree < 180)
+            if (hourDegree < 180)
             {
                 solution = tensMinute.ToString() + onesMinute.ToString() + tensHour.ToString() + onesHour.ToString();
             }
@@ -53,6 +55,5 @@ public class ForgotPasswordModule : BaseModule
                 solution = tensHour.ToString() + onesHour.ToString() + tensMinute.ToString() + onesMinute.ToString();
             }
         }
-        #endregion
     }
 }
