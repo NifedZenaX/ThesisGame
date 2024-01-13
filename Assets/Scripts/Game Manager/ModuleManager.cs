@@ -24,6 +24,11 @@ public class ModuleManager : MonoBehaviour
         ObjectPool.Instance.GetGameObjectFromPool(module.ToString(), 1);
     }
 
+    public void FinishModuleMock()
+    {
+        ScoreManager.instance.AddSatisfiedCustomer();
+    }
+
     public ModuleMapping.ModuleTypeEnum GetAvailableModuleTypeEnum()
     {
         return moduleTypeEnumList[Random.Range(0, moduleTypeEnumList.Count - 1)];
