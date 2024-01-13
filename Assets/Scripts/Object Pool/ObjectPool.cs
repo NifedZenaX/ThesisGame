@@ -54,6 +54,8 @@ public class ObjectPool : MonoBehaviour
 
     private void Proliferate(Pool pool, GameObject parent)
     {
+        parent.transform.position = gameObject.transform.position;
+
         if (pool.isUIElement)
         {
             Canvas canvas = parent.AddComponent<Canvas>();
@@ -63,7 +65,6 @@ public class ObjectPool : MonoBehaviour
             CanvasScaler canvasScaler = parent.AddComponent<CanvasScaler>();
             canvasScaler.uiScaleMode = pool.uiScaleMode;
             canvasScaler.referenceResolution = (pool.referenceResolution != Vector2.zero) ? pool.referenceResolution : new Vector2(800, 600);
-
         }
 
         for (int i = 0; i < pool.size; i++)
@@ -105,6 +106,15 @@ public class ObjectPool : MonoBehaviour
         newObj.SetActive(false);
         newObj.transform.SetParent(parent);
         newObj.transform.localScale = prefab.transform.localScale;
+
+        if (prefab.TryGetComponent(out RectTransform rectTrans))
+        {
+            RectTransform objRect = newObj.GetComponent<RectTransform>();
+            objRect.anchorMin = rectTrans.anchorMin;
+            objRect.anchorMax = rectTrans.anchorMax;
+            objRect.anchoredPosition = rectTrans.anchoredPosition;
+        }
+
         return newObj.GetComponent<PooledObject>();
     }
 
