@@ -3,7 +3,18 @@
   <body>
     <div>
       VBoo
-      <iframe src="https://docs.google.com/gview?url=https://binusianorg-my.sharepoint.com/personal/willie_soo_binus_ac_id/_layouts/15/guestaccess.aspx?share=ESPksL7jDMBBmZ5mSHdu_pUBBU2VaeTmW3niEeqr30CeBA&e=JcxaVH&embedded=true"></iframe>
+      <iframe class="word" src="https://docs.google.com/gview?url=https://binusianorg-my.sharepoint.com/personal/willie_soo_binus_ac_id/_layouts/15/guestaccess.aspx?share=ESPksL7jDMBBmZ5mSHdu_pUBBU2VaeTmW3niEeqr30CeBA&e=JcxaVH&embedded=true"></iframe>
     </div>  
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/fancybox/3.5.7/jquery.fancybox.min.js"></script>
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/fancybox/3.5.7/jquery.fancybox.js"></script>
+    <script>
+      $(document).ready(function() {
+       $(".word").fancybox({
+        'width': 600, // or whatever
+        'height': 320,
+        'type': 'iframe'
+       });
+      }); //  ready 
+    </script>
   </body>
 </html>
