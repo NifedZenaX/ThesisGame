@@ -7,7 +7,6 @@ using Random = UnityEngine.Random;
 public class ShapesNumbersModule : BaseModule
 {
     private Shape shape;
-    public List<int> buttonNumberList;
 
     private enum Shape
     {
@@ -27,7 +26,7 @@ public class ShapesNumbersModule : BaseModule
         shape = shapesEnum[Random.Range(0, shapesEnum.Length)];
 
         // reset buttonNumberList-nya
-        buttonNumberList.Clear();
+        List<int> buttonNumberList = new List<int>();
 
         // habis itu, cek dia itu kasusnya apa
         // anyway, untuk peletakan angka didalam buttonNumberList, 3 angka pertama itu pasti yang dihighlight
@@ -113,20 +112,23 @@ public class ShapesNumbersModule : BaseModule
                     break;
                 }
         }
+
+        problem = buttonNumberList;
     }
 
     public override void GenerateSolution()
     {
+        List<int> castedProblem = (List<int>)problem;
         switch (shape)
         {
             case Shape.Square:
-                solution = buttonNumberList[0] + buttonNumberList[1] + buttonNumberList[2];
+                solution = castedProblem[0] + castedProblem[1] + castedProblem[2];
                 break;
             case Shape.Triangle:
-                solution = buttonNumberList[0] + buttonNumberList[1] + buttonNumberList[2];
+                solution = castedProblem[0] + castedProblem[1] + castedProblem[2];
                 break;
             case Shape.Circle:
-                solution = new int[] { buttonNumberList[0], buttonNumberList[1], buttonNumberList[2] };
+                solution = new int[] { castedProblem[0], castedProblem[1], castedProblem[2] };
                 break;
         }
     }
