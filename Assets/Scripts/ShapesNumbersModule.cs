@@ -2,12 +2,13 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using System;
+using UnityEngine.UI;
 using Random = UnityEngine.Random;
 
 public class ShapesNumbersModule : BaseModule
 {
     private Shape shape;
-
+    private ShapesNumberButton[] buttonList = new ShapesNumberButton[12];
     private enum Shape
     {
         Square=0,
@@ -133,7 +134,12 @@ public class ShapesNumbersModule : BaseModule
         }
     }
 
-    public override bool CheckAnswer(object answer)
+    public override bool? CheckAnswer()
+    {
+        return CheckAnswer(answer);
+    }
+
+    public bool? CheckAnswer(object answer)
     {
         // well, object answer itu nggak selalu ada 3 jawaban, so it really depends
         // tapi apa yang pasti itu adalah dia pasti IEnumerable<int>, jadi mau bagaimana pun, dia pasti bisa dicast jadi itu
@@ -142,16 +148,32 @@ public class ShapesNumbersModule : BaseModule
 
         switch (shape)
         {
-            case Shape.Square:
+            case Shape.Square when castedAnswer.Count == 3:
                 {
-                    return (castedAnswer[0] + castedAnswer[1] + castedAnswer[2]) > (int)solution;
+                    if ((castedAnswer[0] + castedAnswer[1] + castedAnswer[2]) > (int)solution)
+                    {
+                        return true;
+                    }
+                    else
+                    {
+                        ResetAnswer();
+                        return false;
+                    }
                 }
-            case Shape.Triangle:
+            case Shape.Triangle when castedAnswer.Count == 2:
                 {
-                    return (castedAnswer[0] * castedAnswer[1]) == (int)solution;
+                    if ((castedAnswer[0] * castedAnswer[1]) == (int)solution)
+                    {
+                        return true;
+                    }
+                    else
+                    {
+                        ResetAnswer();
+                        return false;
+                    }
                 }
 
-            case Shape.Circle:
+            case Shape.Circle when castedAnswer.Count == 3:
                 {
                     int totalAnswer = castedAnswer[0] + castedAnswer[1] + castedAnswer[2];
                     bool isCorrect = false;
@@ -159,11 +181,93 @@ public class ShapesNumbersModule : BaseModule
                     {
                         isCorrect = (totalAnswer % factor == 0) || isCorrect;
                     }
-                    return isCorrect;
+                    
+                    if (isCorrect == true)
+                    {
+                        return true;
+                    }
+                    else
+                    {
+                        ResetAnswer();
+                        return false;
+                    }
                 }
             default:
                 Debug.LogWarning("How did you get here...? Shape: " + shape.ToString());
-                return false;
+                return null;
         }
+    }
+
+    public override void ResetAnswer()
+    {
+        answer = new List<int>();
+        if (buttonList[0] != null)
+        {
+            foreach (ShapesNumberButton snb in buttonList)
+            {
+                snb.button.interactable = true;
+            }
+        }
+    }
+
+    public override void LinkUIToLogic()
+    {
+        // tarik Shapes GameObjectsnya
+        foreach(Image img in gameModule.GetComponentsInChildren<Image>(true))
+        {
+            if (new List<string>(Enum.GetNames(typeof(Shape))).Contains(img.gameObject.name))
+            {
+                img.gameObject.SetActive(false);
+            }
+
+            if (shape.ToString().Contains(img.name))
+            {
+                img.gameObject.SetActive(true);
+            }
+        }
+
+        // tarik button"nya
+        buttonList = gameModule.GetComponentsInChildren<ShapesNumberButton>();
+        List<ShapesNumberButton> buttonListCopy = new List<ShapesNumberButton>(buttonList);
+
+        // cast problem jadi List<int>
+        List<int> castedProblem = (List<int>)problem;
+
+        // bikin semua highlightnya dimatiin dlu
+        // juga hapus smua listener dari buttonnya
+        foreach (ShapesNumberButton snb in buttonListCopy)
+        {
+            snb.highlighter.enabled = false;
+            snb.button.onClick.RemoveAllListeners();
+        }
+
+        // setup button"nya
+        for (int i = 0; i < castedProblem.Count; i++)
+        {
+            // dapetin random index buttonnya
+            int btnIdx = Random.Range(0, buttonListCopy.Count);
+            
+            // 3 button pertama itu pasti dihighlight
+            if (i < 3)
+            {
+                buttonListCopy[btnIdx].highlighter.enabled = true;
+            }
+
+            // sehabis dinyalain highlighter-nya, ubah tulisan text dari buttonnya
+            buttonListCopy[btnIdx].btnText.text = castedProblem[i].ToString();
+
+            // hapus button di index btnIdx
+            buttonListCopy.RemoveAt(btnIdx);
+        }
+
+        foreach (ShapesNumberButton snb in buttonList)
+        {
+            snb.button.onClick.AddListener(delegate { SubmitAnswer(int.Parse(snb.btnText.text)); snb.button.interactable = false; });
+        }
+    }
+
+    public override void SubmitAnswer(object answer)
+    {
+        ((List<int>)this.answer).Add((int)answer);
     }
 }

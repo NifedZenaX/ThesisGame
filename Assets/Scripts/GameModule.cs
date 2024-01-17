@@ -13,14 +13,21 @@ public class GameModule : MonoBehaviour
     {
         //TODO: generate random number between 0-enumCount to randomly generate module
         module = (BaseModule)ModuleMapping.moduleMapping[moduleType];
+        module.gameModule = this;
+        GetProblem();
     }
 
     private void Update()
     {
-        if (Input.anyKeyDown)
+        if (Input.GetKeyDown(KeyCode.KeypadEnter))
         {
             module.GenerateProblemAndSolution();
             //Debug.Log("Problem: " + module.problem.ToString() + " and Solution: " + module.solution.ToString());
+        }
+
+        if (module.CheckAnswer() != null && module.CheckAnswer() == true)
+        {
+            module.GenerateProblemAndSolution();
         }
     }
 
@@ -31,18 +38,8 @@ public class GameModule : MonoBehaviour
         return module.problem;
     }
 
-    public void SubmitAnswer(string answer)
+    public void SubmitAnswer(object answer)
     {
-        bool isCorrect = module.CheckAnswer(answer);
-        if (isCorrect)
-        {
-            //TODO: if answer is correct
-            Debug.Log("You answered this question correctly!");
-        }
-        else
-        {
-            //TODO: if answer is wrong
-            Debug.Log("You answered this question incorrectly!");
-        }
+        ((List<object>)module.answer).Add(answer);
     }
 }

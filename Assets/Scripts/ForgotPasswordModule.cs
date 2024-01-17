@@ -6,6 +6,11 @@ public class ForgotPasswordModule : BaseModule
     double hourDegree, minuteDegree;
     TimeSpan time;
 
+    public override bool? CheckAnswer()
+    {
+        throw new NotImplementedException();
+    }
+
     public override void GenerateProblem()
     {
         Random rand = new Random();
@@ -55,5 +60,20 @@ public class ForgotPasswordModule : BaseModule
                 solution = tensHour.ToString() + onesHour.ToString() + tensMinute.ToString() + onesMinute.ToString();
             }
         }
+    }
+
+    public override void LinkUIToLogic()
+    {
+        throw new NotImplementedException();
+    }
+
+    public override void ResetAnswer()
+    {
+        throw new NotImplementedException();
+    }
+
+    public override void SubmitAnswer(object answer)
+    {
+        throw new NotImplementedException();
     }
 }

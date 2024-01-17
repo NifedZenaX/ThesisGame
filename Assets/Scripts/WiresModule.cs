@@ -123,4 +123,24 @@ public class WiresModule : BaseModule
         }
         solution = numbers;
     }
+
+    public override void LinkUIToLogic()
+    {
+        throw new NotImplementedException();
+    }
+
+    public override void SubmitAnswer(object answer)
+    {
+        throw new NotImplementedException();
+    }
+
+    public override void ResetAnswer()
+    {
+        throw new NotImplementedException();
+    }
+
+    public override bool? CheckAnswer()
+    {
+        throw new NotImplementedException();
+    }
 }
