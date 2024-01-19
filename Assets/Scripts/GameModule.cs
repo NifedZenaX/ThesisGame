@@ -25,7 +25,7 @@ public class GameModule : MonoBehaviour
             //Debug.Log("Problem: " + module.problem.ToString() + " and Solution: " + module.solution.ToString());
         }
 
-        if (module.CheckAnswer() != null && module.CheckAnswer() == true)
+        if (module.CheckAnswer() == true && module.CheckAnswer() != null)
         {
             module.GenerateProblemAndSolution();
         }

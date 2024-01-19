@@ -1,4 +1,4 @@
-public enum WireColorEnum
+public enum ColorEnum
 {
     Red,
     Green,
