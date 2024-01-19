@@ -17,7 +17,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &82277167978591479
 RectTransform:
   m_ObjectHideFlags: 0
@@ -75,8 +75,8 @@ MonoBehaviour:
   m_fontMaterials: []
   m_fontColor32:
     serializedVersion: 2
-    rgba: 4281479730
-  m_fontColor: {r: 0.19607843, g: 0.19607843, b: 0.19607843, a: 1}
+    rgba: 4294967295
+  m_fontColor: {r: 1, g: 1, b: 1, a: 1}
   m_enableVertexGradient: 0
   m_colorMode: 3
   m_fontColorGradient:
@@ -147,7 +147,7 @@ GameObject:
   - component: {fileID: 234538162360523799}
   - component: {fileID: 3290479325823527208}
   m_Layer: 5
-  m_Name: Image
+  m_Name: Wire 1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -195,7 +195,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
   m_Color: {r: 0.990566, g: 0.990566, b: 0.990566, a: 1}
-  m_RaycastTarget: 1
+  m_RaycastTarget: 0
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
   m_OnCullStateChanged:
@@ -224,7 +224,7 @@ GameObject:
   - component: {fileID: 2466923996915906068}
   - component: {fileID: 7499430991449532590}
   m_Layer: 5
-  m_Name: Button (2)
+  m_Name: Button 3
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -249,7 +249,7 @@ RectTransform:
   m_AnchorMin: {x: 1, y: 1}
   m_AnchorMax: {x: 1, y: 1}
   m_AnchoredPosition: {x: -0.000015258789, y: 0}
-  m_SizeDelta: {x: 89.1304, y: 31.09}
+  m_SizeDelta: {x: 89.1304, y: 30}
   m_Pivot: {x: 1, y: 1}
 --- !u!222 &6027764421995037527
 CanvasRenderer:
@@ -350,7 +350,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &6672446834661768451
 RectTransform:
   m_ObjectHideFlags: 0
@@ -408,8 +408,8 @@ MonoBehaviour:
   m_fontMaterials: []
   m_fontColor32:
     serializedVersion: 2
-    rgba: 4281479730
-  m_fontColor: {r: 0.19607843, g: 0.19607843, b: 0.19607843, a: 1}
+    rgba: 4294967295
+  m_fontColor: {r: 1, g: 1, b: 1, a: 1}
   m_enableVertexGradient: 0
   m_colorMode: 3
   m_fontColorGradient:
@@ -481,7 +481,7 @@ GameObject:
   - component: {fileID: 3531783614090325428}
   - component: {fileID: 8974699552100415622}
   m_Layer: 5
-  m_Name: Button (5)
+  m_Name: Button 6
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -506,7 +506,7 @@ RectTransform:
   m_AnchorMin: {x: 1, y: 0}
   m_AnchorMax: {x: 1, y: 0}
   m_AnchoredPosition: {x: -0.69999695, y: 3}
-  m_SizeDelta: {x: 88.43, y: 30.495}
+  m_SizeDelta: {x: 88.43, y: 30}
   m_Pivot: {x: 1, y: 0}
 --- !u!222 &1850702943527123765
 CanvasRenderer:
@@ -603,7 +603,7 @@ GameObject:
   - component: {fileID: 3720511699073298668}
   - component: {fileID: 2429161035368810833}
   m_Layer: 5
-  m_Name: Button (1)
+  m_Name: Button 2
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -628,7 +628,7 @@ RectTransform:
   m_AnchorMin: {x: 0.5, y: 1}
   m_AnchorMax: {x: 0.5, y: 1}
   m_AnchoredPosition: {x: 0.6, y: 0}
-  m_SizeDelta: {x: 89.3424, y: 39.114}
+  m_SizeDelta: {x: 89.3424, y: 30}
   m_Pivot: {x: 0.5, y: 1}
 --- !u!222 &5228290779534184608
 CanvasRenderer:
@@ -724,7 +724,7 @@ GameObject:
   - component: {fileID: 3690174302539216223}
   - component: {fileID: 3374195018422779992}
   m_Layer: 5
-  m_Name: Image (4)
+  m_Name: Wire 5
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -772,7 +772,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
-  m_RaycastTarget: 1
+  m_RaycastTarget: 0
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
   m_OnCullStateChanged:
@@ -801,7 +801,7 @@ GameObject:
   - component: {fileID: 6431328086688342714}
   - component: {fileID: 1547662436465258267}
   m_Layer: 5
-  m_Name: Button (3)
+  m_Name: Button 4
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -826,7 +826,7 @@ RectTransform:
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
   m_AnchoredPosition: {x: 0.000030517578, y: 1.6000004}
-  m_SizeDelta: {x: 88.666, y: 31.3128}
+  m_SizeDelta: {x: 88.666, y: 30}
   m_Pivot: {x: 0, y: 0}
 --- !u!222 &1594081383699338206
 CanvasRenderer:
@@ -923,7 +923,7 @@ GameObject:
   - component: {fileID: 425016931700622559}
   - component: {fileID: 1424478231873676452}
   m_Layer: 5
-  m_Name: Button
+  m_Name: Button 1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -948,7 +948,7 @@ RectTransform:
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 0, y: 1}
   m_AnchoredPosition: {x: -0.000015258789, y: 0}
-  m_SizeDelta: {x: 88.6665, y: 31.0895}
+  m_SizeDelta: {x: 88.6665, y: 30}
   m_Pivot: {x: 0, y: 1}
 --- !u!222 &8152913415629154379
 CanvasRenderer:
@@ -1049,7 +1049,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &1563980404934322098
 RectTransform:
   m_ObjectHideFlags: 0
@@ -1107,8 +1107,8 @@ MonoBehaviour:
   m_fontMaterials: []
   m_fontColor32:
     serializedVersion: 2
-    rgba: 4281479730
-  m_fontColor: {r: 0.19607843, g: 0.19607843, b: 0.19607843, a: 1}
+    rgba: 4294967295
+  m_fontColor: {r: 1, g: 1, b: 1, a: 1}
   m_enableVertexGradient: 0
   m_colorMode: 3
   m_fontColorGradient:
@@ -1179,7 +1179,7 @@ GameObject:
   - component: {fileID: 4540553747679378032}
   - component: {fileID: 1701169799065634337}
   m_Layer: 5
-  m_Name: Image (2)
+  m_Name: Wire 3
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1227,7 +1227,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
-  m_RaycastTarget: 1
+  m_RaycastTarget: 0
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
   m_OnCullStateChanged:
@@ -1256,7 +1256,7 @@ GameObject:
   - component: {fileID: 475373050926156901}
   - component: {fileID: 8707078037694864320}
   m_Layer: 5
-  m_Name: Button (4)
+  m_Name: Button 5
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1281,7 +1281,7 @@ RectTransform:
   m_AnchorMin: {x: 0.5, y: 0}
   m_AnchorMax: {x: 0.5, y: 0}
   m_AnchoredPosition: {x: -0.000062585, y: 1.5}
-  m_SizeDelta: {x: 90.543, y: 31.413}
+  m_SizeDelta: {x: 90.543, y: 30}
   m_Pivot: {x: 0.5, y: 0}
 --- !u!222 &6181233143634822145
 CanvasRenderer:
@@ -1377,7 +1377,7 @@ GameObject:
   - component: {fileID: 5827096834122751722}
   - component: {fileID: 8675862069603003760}
   m_Layer: 5
-  m_Name: Image (1)
+  m_Name: Wire 2
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1425,7 +1425,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
-  m_RaycastTarget: 1
+  m_RaycastTarget: 0
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
   m_OnCullStateChanged:
@@ -1499,14 +1499,14 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 6498969810634525970}
-  m_Enabled: 0
+  m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: fe87c0e1cc204ed48ad3b37840f39efc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 1, g: 1, b: 1, a: 0.392}
-  m_RaycastTarget: 1
+  m_Color: {r: 1, g: 0.75294125, b: 0.85098046, a: 0.392}
+  m_RaycastTarget: 0
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
   m_OnCullStateChanged:
@@ -1539,7 +1539,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &4647916095360717840
 RectTransform:
   m_ObjectHideFlags: 0
@@ -1597,8 +1597,8 @@ MonoBehaviour:
   m_fontMaterials: []
   m_fontColor32:
     serializedVersion: 2
-    rgba: 4281479730
-  m_fontColor: {r: 0.19607843, g: 0.19607843, b: 0.19607843, a: 1}
+    rgba: 4294967295
+  m_fontColor: {r: 1, g: 1, b: 1, a: 1}
   m_enableVertexGradient: 0
   m_colorMode: 3
   m_fontColorGradient:
@@ -1674,7 +1674,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &3995404121889613283
 RectTransform:
   m_ObjectHideFlags: 0
@@ -1732,8 +1732,8 @@ MonoBehaviour:
   m_fontMaterials: []
   m_fontColor32:
     serializedVersion: 2
-    rgba: 4281479730
-  m_fontColor: {r: 0.19607843, g: 0.19607843, b: 0.19607843, a: 1}
+    rgba: 4294967295
+  m_fontColor: {r: 1, g: 1, b: 1, a: 1}
   m_enableVertexGradient: 0
   m_colorMode: 3
   m_fontColorGradient:
@@ -1804,7 +1804,7 @@ GameObject:
   - component: {fileID: 4365638982650768442}
   - component: {fileID: 6667423002698877685}
   m_Layer: 5
-  m_Name: Image (3)
+  m_Name: Wire 4
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1852,7 +1852,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
-  m_RaycastTarget: 1
+  m_RaycastTarget: 0
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
   m_OnCullStateChanged:
@@ -2089,7 +2089,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: -1974122211, guid: 9b893bb02f564ba4aad1d1b5419a4e7d, type: 3}
+  m_Sprite: {fileID: 924978795, guid: 127d748c563e3b34aa0acbab098372a9, type: 3}
   m_Type: 0
   m_PreserveAspect: 1
   m_FillCenter: 1
@@ -2198,7 +2198,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &5641298824958550883
 RectTransform:
   m_ObjectHideFlags: 0
@@ -2256,8 +2256,8 @@ MonoBehaviour:
   m_fontMaterials: []
   m_fontColor32:
     serializedVersion: 2
-    rgba: 4281479730
-  m_fontColor: {r: 0.19607843, g: 0.19607843, b: 0.19607843, a: 1}
+    rgba: 4294967295
+  m_fontColor: {r: 1, g: 1, b: 1, a: 1}
   m_enableVertexGradient: 0
   m_colorMode: 3
   m_fontColorGradient:
@@ -2453,6 +2453,43 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 360a6374f8568f640b89a93982dc20b9, type: 3}
+--- !u!1 &4531090589054718280 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 6347707240029860981, guid: 360a6374f8568f640b89a93982dc20b9, type: 3}
+  m_PrefabInstance: {fileID: 7419184472553121085}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &7894454252264212891
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4531090589054718280}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: acf83f86d842acc43ac7fbbf17651b23, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  wires:
+  - {fileID: 3290479325823527208}
+  - {fileID: 8675862069603003760}
+  - {fileID: 1701169799065634337}
+  - {fileID: 6667423002698877685}
+  - {fileID: 3374195018422779992}
+  buttons:
+  - {fileID: 1424478231873676452}
+  - {fileID: 2429161035368810833}
+  - {fileID: 7499430991449532590}
+  - {fileID: 1547662436465258267}
+  - {fileID: 8707078037694864320}
+  - {fileID: 8974699552100415622}
+  buttonTexts:
+  - {fileID: 1103653280203121952}
+  - {fileID: 1246489673251440301}
+  - {fileID: 9055473303873046835}
+  - {fileID: 3447099262672524576}
+  - {fileID: 1384745917900486099}
+  - {fileID: 7211656173988881486}
 --- !u!224 &7583762451994876930 stripped
 RectTransform:
   m_CorrespondingSourceObject: {fileID: 1137391165487118655, guid: 360a6374f8568f640b89a93982dc20b9, type: 3}

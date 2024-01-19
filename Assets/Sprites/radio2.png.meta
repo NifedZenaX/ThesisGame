@@ -129,27 +129,6 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: radio_body
-      rect:
-        serializedVersion: 2
-        x: 130
-        y: 34
-        width: 784
-        height: 423
-      alignment: 0
-      pivot: {x: 0.5, y: 0.5}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 4ed9ae8e5a9018646946f9132fa1bffb
-      internalID: -1974122211
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
       name: wire_1
       rect:
         serializedVersion: 2
