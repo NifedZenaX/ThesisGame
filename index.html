@@ -1,19 +1,143 @@
 <!DOCTYPE html>
-<html>
-  <body>
-    <div>
-      VBoo
-      <iframe class="word" src="https://docs.google.com/gview?url=https://docs.google.com/document/d/1XCuFiIyyt9KhC3IraUnAYNUYkET13M3B&embedded=true"></iframe>
-    </div>  
-    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/fancybox/3.5.7/jquery.fancybox.min.js"></script>
-    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/fancybox/3.5.7/jquery.fancybox.js"></script>
-    <script>
-      $(document).ready(function() {
-       $(".word").fancybox({
-        'width': 600, // or whatever
-        'height': 320,
-       });
-      }); //  ready 
-    </script>
-  </body>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Guidebook</title>
+  <style>
+    *{
+      padding: 0;
+      margin: 0;
+      box-sizing: border-box;
+    }
+    main{
+      display: flex;
+      flex-direction: column;
+      background-color: antiquewhite;
+      padding-block: 1em;
+      align-items: center;
+    }
+    .content{
+      background-color: white;
+      width: 816px;
+      height: 1056px;
+      box-shadow: 5px 5px 10px 0px rgba(0, 0, 0, 0.5);
+      margin-block: 1em;
+      padding: 3em;
+    }
+    .content h1{
+      text-align: center;
+      margin-bottom: 10px;
+    }
+
+    .content div{
+      margin-block: 10px;
+    }
+
+    .description{
+      display: flex;
+    }
+
+    .forgot-password-img{
+      max-height: 200px;
+      width: auto;
+    }
+
+    .forgot-password-hint-img{
+      max-width: 200px;
+      height: auto;
+    }
+
+    .wires-dialpads-img{
+      max-width: 300px;
+      height: auto;
+    }
+
+    .example-list{
+      list-style: none;
+    }
+  </style>
+</head>
+<body>
+    <main>
+      <div class="content">
+        <h1>Forgot Password</h1>
+        <div class="description">
+          <p>
+            Pelanggan telah melupakan passwordnya. Kamu akan membantu pelanggan untuk membuka handphonenya. Di layar akan terlihat sebuah jam dan 9 tombol untuk memasukkan password. Password berupa 4 buah angka. Kamu dapat mengetahui passwordnya dengan melihat jam yang ada di layar.
+          </p>
+          <img src="GuideBookAssets/ForgotPassword.png" alt="" class="forgot-password-img">
+        </div>
+        <div>
+          Buku ini akan menggunakan sebutan <b>H, h, M, dan m</b> sebagai panduan untuk mendapatkan password.
+          
+          <img src="GuideBookAssets/ForgotPasswordHint.png" alt="" class="forgot-password-hint-img">
+        </div>
+        <div>
+          <ul>
+            <li>Jika nilai menitnya berupa angka genap, maka jamnya akan ditulis dalam penulisan jam 0-11</li>
+            <li class="example-list"><b>Contoh: 03.20 -> karena nilai menitnya 20, dan 20 adalah angka genap, maka jamnya tetap ditulis sebagai 03.</b></li>
+            <li>Jika nilai menitnya berupa angka ganjil, maka jamnya akan ditulis dalam penulisan jam 12-23.</li>
+            <li class="example-list"><b>Contoh: 03.21 -> karena nilai menitnya 21, dan 21 adalah angka ganjil, maka jamnya ditulis sebagai 15.</b></li>
+          </ul>
+        </div>
+        <div>
+          <ul>
+            <li>Jika jarum jam ada di depan jarum menit, tepat di bawah jarum menit, atau tepat di atas jarum menit, maka passwordnya akan ditulis dalam bentuk <b>mMhH</b></li>
+            <li class="example-list"><b>Contoh: 03.21 -> 1230 atau 15.21 -> 1251</b></li>
+            <li>
+              Jika jarum jam ada di belakang jarum menit, maka ada 2 kemungkinan:
+              <ul>
+                <li>Jika jarum jam ada di antara angka 12 sampai 6, maka passwordnya akan ditulis dalam bentuk <b>MmHh</b></li>
+                <li class="example-list"><b>Contoh: 03.21 -> 2103 atau 15.21 -> 2115</b></li>
+                <li>Jika jarum jam ada di antara angka 6 sampai 12, maka passwordnya akan ditulis dalam bentuk <b>HhMm</b></li>
+                <li class="example-list"><b>Contoh: 03.21 -> 0321 atau 15.21 -> 1521</b></li>
+              </ul>
+            </li>
+          </ul>
+          Jika jarum jam ada di depan jarum menit, ada di seberang jarum menit, atau tempatnya sama dengan jarum menit, maka passwordnya akan ditulis dalam bentuk mMhH.
+          Contoh: 03.21 -> 1230 atau 15.21 -> 1251
+
+          Jika jarum jam ada di belakang jarum menit, maka ada 2 kemungkinan:
+          Jika jarum jam ada di antara angka 12 sampai 6, maka passwordnya akan ditulis dalam bentuk MmHh.
+          Contoh: 03.21 -> 2103 atau 15.21 -> 2115
+          Jika jarum jam ada di antara angka 6 sampai 12, maka passwordnya akan ditulis dalam bentuk HhMm.
+          Contoh: 03.21 -> 0321 atau 15.21 -> 1521
+        </div>
+      </div>
+      <div class="content">
+        <h1>Wires and Dialpads</h1>
+        <div class="description">
+          <p>
+            Radio pelanggan ada kerusakan. Kamu akan membantu pelanggan untuk memperbaiki handphonenya. Di layar akan terlihat 3-5 kabel dengan berbagai macam warna dan 6 tombol berisi angka dan berwarna juga. Kamu akan memencet beberapa tombol yang ada berdasarkan aturan-aturan dibawah ini:
+          </p>
+          <img src="GuideBookAssets/WiresDialpads.png" alt="" class="wires-dialpads-img">
+        </div>
+        <div>
+          <ul>
+            <li>Jika kabelnya ada <b>4</b>, tekan semua tombol dengan warna yang sama dengan kabel ketiga</li>
+            <li>Selain itu, jika kabel di posisi <b>pertama</b> berwarna hijau, tekan semua angka ganjil dari yang terkecil sampai yang terbesar.</li>
+            <li>Selain itu, jika ada <b>3</b> kabel, jumlahkan semua angka di tombol, lalu bagi 6, lalu pencet 3 tombol yang angkanya paling dekat dengan angka yang sudah dibagi itu.</li>
+            <li>Selain itu, cari total kabel dengan warna terbanyak, lalu tekan semua angka yang ada di kelipatan jumlah kabel terbanyak itu.</li>
+          </ul>
+        </div>
+      </div>
+      <div class="content">
+        <h1>Shapes & Numbers</h1>
+        <div class="description">
+          <p>
+            Di layar akan terlihat sebuah bangun datar dan 12 tombol angka, dan ada 3 tombol yang menyala. Kamu harus menekan tombol-tombol yang ada di layar berdasarkan bangun datar yang ada di layar. Aturannya bisa dibaca di bawah ini
+          </p>
+          <!-- img shapes n nums -->
+        </div>
+        <div>
+          <ul>
+            <li>Jika bangun datar yang muncul adalah <b>persegi</b>, maka jumlahkan angka dari 3 tombol yang menyala, lalu tekan 3 tombol yang bila dijumlahkan akan lebih besar dari hasil penjumlahan dari 3 tombol yang menyala.</li>
+            <li>Jika bangun datar yang muncul adalah <b>segitiga</b>, maka jumlahkan angka dari 3 tombol yang menyala, lalu tekan 2 tombol yang bisa dikalikan, nilainya sama dengan hasil penjumlahan dari 3 tombol yang menyala.</li>
+            <li>Jika bangun datar yang muncul adalah <b>lingkaran</b>, maka tekan 3 tombol yang bila dijumlahkan, hasil penjumlahannya ada di kelipatan dari salah satu angka dari 3 tombol yang menyala.</li>
+          </ul>
+        </div>
+      </div>
+    </main>
+</body>
 </html>
