@@ -12,6 +12,7 @@ public class WiresModule : BaseModule
     int totalWires;
     List<ColorEnum> wires;
     bool hasCheckInCurrentFrame = false;
+    int totalButtons;
     
     public struct WireNumber
     {
@@ -26,11 +27,17 @@ public class WiresModule : BaseModule
         return (ColorEnum)wireEnums.GetValue(rand.Next(wireEnums.Length));
     }
 
-    private void SetCorrectAnswer(List<WireNumber> number, int index)
+    private void SetCorrectAnswer(List<WireNumber> numbers, int index, int number)
     {
-        WireNumber n = number[index];
+        WireNumber n = numbers[index];
+        n.number = number;
         n.isAnswer = true;
-        number[index] = n;
+        numbers[index] = n;
+    }
+
+    private void SetCorrectAnswer(List<WireNumber> numbers, int index)
+    {
+        SetCorrectAnswer(numbers, index, numbers[index].number);
     }
 
     public override void GenerateProblem()
@@ -46,9 +53,11 @@ public class WiresModule : BaseModule
 
     public override void GenerateSolution()
     {
-        int totalNumbers = 6;
+        Random rand = new Random();
+        totalButtons = rand.Next(2, 7);
+
         List<WireNumber> numbers = new List<WireNumber>();
-        for (int i = 0; i < totalNumbers; i++)
+        for (int i = 0; i < totalButtons; i++)
         {
             WireNumber num = new WireNumber();
             num.color = GetRandomColor();
@@ -60,7 +69,11 @@ public class WiresModule : BaseModule
 
         if (totalWires == 4)
         {
-            for (int i = 0; i < totalNumbers; i++)
+            // guarantees that there's at least 1 button that is the answer
+            WireNumber num = numbers[0];
+            num.color = wires[2];
+
+            for (int i = 0; i < totalButtons; i++)
             {
                 if (numbers[i].color == wires[2])
                 {
@@ -70,7 +83,7 @@ public class WiresModule : BaseModule
         }
         else if (wires[0] == ColorEnum.Green)
         {
-            for (int i = 0; i < totalNumbers; i++)
+            for (int i = 0; i < totalButtons; i++)
             {
                 if (numbers[i].number % 2 == 1)
                 {
@@ -81,32 +94,83 @@ public class WiresModule : BaseModule
         }
         else if (totalWires == 3)
         {
-            int average = 0;
-            for (int i = 0; i < totalNumbers; i++)
+            for (int i = 0; i < numbers.Count; i++)
             {
-                average += numbers[i].number;
-            }
-            average /= totalNumbers;
-
-            List<double> distances = new List<double>();
-            for (int i = 0; i < totalNumbers; i++)
-            {
-                double distance = numbers[i].number - average;
-                distance = (distance < 0) ? -distance : distance;
-                distances.Add(distance);
+                WireNumber num = numbers[i];
+                num.number = 0;
             }
 
-            for (int i = 0; i < 3; i++)
+            int average = rand.Next(2, 11);
+            int total = totalButtons * average;
+
+            WireNumber correctAns = numbers[0];
+            correctAns.number = average;
+            numbers[0] = correctAns;
+            Debug.Log($"correctAns: {correctAns.number}");
+            SetCorrectAnswer(numbers, 0);
+
+            int totalValue = average;
+            int maxButtonValue = 10;
+
+            for (int i = 1; i < totalButtons; i++)
             {
-                double closest = 999;
-                for (int j = 0; j < totalNumbers; j++)
+                int slotLeft = totalButtons - i;
+                int slotTotalValue = total - totalValue;
+
+                int minRange = (slotTotalValue > ((slotLeft - 1) * maxButtonValue)) ? slotTotalValue % ((slotLeft > 1) ? (slotLeft - 1) * maxButtonValue : maxButtonValue) : 1;
+                if (minRange == 0)
                 {
-                    if (distances[j] < closest && !numbers[j].isAnswer) closest = distances[j];
+                    minRange = maxButtonValue;
                 }
-                int index = distances.FindIndex(x => x == closest);
 
-                SetCorrectAnswer(numbers, index);
+                int maxRange = slotTotalValue - ((slotLeft - 1) * minRange);
+                if (maxRange > maxButtonValue)
+                {
+                    maxRange = maxButtonValue;
+                }
+
+                Debug.Log($"totalValue: {totalValue}, slotTotalValue: {slotTotalValue}, average: {average}, minRange: {minRange}, maxRange: {maxRange}");
+
+                int num = rand.Next(minRange, maxRange + 1);
+                totalValue += num;
+
+                WireNumber n = numbers[i];
+                n.number = num;
+                numbers[i] = n;
+
+                if (num == average)
+                {
+                    SetCorrectAnswer(numbers, i);
+                }
+
+                Debug.Log($"index: {i}, number: {n.number}");
             }
+
+            //for (int i = 0; i < totalNumbers; i++)
+            //{
+            //    average += numbers[i].number;
+            //}
+            //average /= totalNumbers;
+
+            //List<double> distances = new List<double>();
+            //for (int i = 0; i < totalNumbers; i++)
+            //{
+            //    double distance = numbers[i].number - average;
+            //    distance = (distance < 0) ? -distance : distance;
+            //    distances.Add(distance);
+            //}
+
+            //for (int i = 0; i < 3; i++)
+            //{
+            //    double closest = 999;
+            //    for (int j = 0; j < totalNumbers; j++)
+            //    {
+            //        if (distances[j] < closest && !numbers[j].isAnswer) closest = distances[j];
+            //    }
+            //    int index = distances.FindIndex(x => x == closest);
+
+            //    SetCorrectAnswer(numbers, index);
+            //}
         }
         else
         {
@@ -120,14 +184,13 @@ public class WiresModule : BaseModule
             totalWireColors.Sort();
             int mostColor = totalWireColors[totalWireColors.Count - 1];
 
-            for (int i = 0; i < totalNumbers; i++)
+            for (int i = 0; i < totalButtons; i++)
             {
                 if (numbers[i].number % mostColor == 0)
                 {
                     SetCorrectAnswer(numbers, i);
                 }
             }
-            numbers.Sort((x, y) => y.number.CompareTo(x.number));
         }
         solution = numbers;
     }
@@ -171,15 +234,17 @@ public class WiresModule : BaseModule
 
         foreach (Button btn in btnCpy)
         {
+            btn.gameObject.SetActive(false);
             btn.onClick.RemoveAllListeners();
         }
 
-        for (int i = 0; i < wmc.buttons.Count; i++)
+        for (int i = 0; i < totalButtons; i++)
         {
             int btnIdx = rand.Next(btnCpy.Count);
 
             btnCpy[btnIdx].image.color = WireModuleComponents.colorDict[castedSolution[i].color];
             textCpy[btnIdx].text = castedSolution[i].number.ToString();
+            btnCpy[btnIdx].gameObject.SetActive(true);
 
             switch (castedSolution[i].color)
             {
@@ -207,8 +272,7 @@ public class WiresModule : BaseModule
 
     public override void SubmitAnswer(object answer)
     {
-        //hasCheckInCurrentFrame = false;
-        Debug.Log($"SubmitAnswer, Answer: [{((WireNumber)answer).number}, {((WireNumber)answer).color}]");
+        hasCheckInCurrentFrame = false;
 
         ((List<WireNumber>)this.answer).Add((WireNumber)answer);
         if (!((WireNumber)answer).isAnswer)
@@ -219,7 +283,8 @@ public class WiresModule : BaseModule
 
     public override void ResetAnswer()
     {
-        //hasCheckInCurrentFrame = false;
+        hasCheckInCurrentFrame = false;
+
         answer = new List<WireNumber>();
         foreach (Button btn in gameModule.GetComponent<WireModuleComponents>().buttons)
         {
@@ -229,24 +294,20 @@ public class WiresModule : BaseModule
 
     public override bool? CheckAnswer()
     {
-        //if (hasCheckInCurrentFrame)
-        //{
-        //    return null;
-        //}
-
+        if (hasCheckInCurrentFrame)
+        {
+            return null;
+        }
         hasCheckInCurrentFrame = true;
 
         List<WireNumber> castedAnswer = answer as List<WireNumber>;
         List<WireNumber> castedSolution = solution as List<WireNumber>;
 
-        // TODO: Remove the debug
-        List<WireNumber> debugSolution = castedSolution.Where((wn) => wn.isAnswer).ToList();
-        string debugString = "Solution: ";
-        foreach (WireNumber solution in debugSolution)
+        if (castedSolution.Count == 0)
         {
-            debugString += $"[{solution.number}, {solution.color}]; ";
+            GenerateProblemAndSolution();
+            return null;
         }
-        Debug.Log(debugString);
 
         if (castedAnswer.Count == 0)
         {
@@ -259,21 +320,12 @@ public class WiresModule : BaseModule
             return null;
         }
 
-        string answerString = "Answer: ";
-        foreach (var wn in castedAnswer)
-        {
-            answerString += $"[{wn.number}, {wn.color}]; ";
-        }
-        Debug.Log(answerString);
-        
         // kalo kasus pertama (kabel ada 4)
         // berarti harus teken semua tombol yang warnanya sama dengan kabel di posisi ketiga
         if (totalWires == 4)
         {
             int currAnsCount = castedAnswer.Count;
-            int solutionCount = castedSolution.Where((wn) => wn.isAnswer).ToList().Count;
-
-            Debug.Log($"currAnsCount: {currAnsCount}, solutionCount: {solutionCount}, (currAnsCount == solutionCount) = {currAnsCount == solutionCount}");
+            int solutionCount = castedSolution.Where((wn) => wn.isAnswer).Count();
 
             if (currAnsCount == solutionCount)
             {
@@ -299,12 +351,6 @@ public class WiresModule : BaseModule
 
         else if (totalWires == 3)
         {
-            if (!castedAnswer[castedAnswer.Count - 1].isAnswer)
-            {
-                ResetAnswer();
-                return null;
-            }
-
             int solutionCount = castedSolution.Where((wn) => wn.isAnswer).Count();
             
             if (castedAnswer.Count == solutionCount)
@@ -315,15 +361,14 @@ public class WiresModule : BaseModule
 
         else
         {
-            int currAns = castedAnswer[castedAnswer.Count - 1].number;
-            List<WireNumber> solution = castedSolution.Where((wn) => wn.isAnswer).ToList();
-
-            if (solution[castedAnswer.Count - 1].number != currAns)
+            if (!castedAnswer[castedAnswer.Count - 1].isAnswer)
             {
                 ResetAnswer();
             }
 
-            else if (solution.Count == castedAnswer.Count) 
+            List<WireNumber> solution = castedSolution.Where((wn) => wn.isAnswer).ToList();
+
+            if (solution.Count == castedAnswer.Count) 
             {
                 return true;
             }

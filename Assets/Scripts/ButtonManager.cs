@@ -8,7 +8,7 @@ public class ButtonManager : MonoBehaviour
     public const int PLAY_SCENE = 1;
 
     [SerializeField] public GameObject pausePanel;
-    public void Play()
+    public static void Play()
     {
         SceneManager.LoadScene(PLAY_SCENE);
     }
@@ -23,5 +23,10 @@ public class ButtonManager : MonoBehaviour
     {
         pausePanel.SetActive(false);
         Time.timeScale = 1;
+    }
+
+    public static void ReturnToMainMenu()
+    {
+        SceneManager.LoadScene(MAIN_MENU_SCENE);
     }
 }

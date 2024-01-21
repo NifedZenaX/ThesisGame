@@ -6,12 +6,10 @@ public class GameModule : MonoBehaviour
 {
     [SerializeField]
     private ModuleMapping.ModuleTypeEnum moduleType;
-
     private BaseModule module;
 
-    private void Start()
+    private void OnEnable()
     {
-        //TODO: generate random number between 0-enumCount to randomly generate module
         module = (BaseModule)ModuleMapping.moduleMapping[moduleType];
         module.gameModule = this;
         GetProblem();
@@ -21,13 +19,13 @@ public class GameModule : MonoBehaviour
     {
         if (Input.GetKeyDown(KeyCode.KeypadEnter))
         {
-            module.GenerateProblemAndSolution();
-            //Debug.Log("Problem: " + module.problem.ToString() + " and Solution: " + module.solution.ToString());
+            ModuleManager.Instance.SpawnGameModule();
         }
 
-        if (module.CheckAnswer() == true && module.CheckAnswer() != null)
+        bool? checkAnswer = module.CheckAnswer();
+        if (checkAnswer == true && checkAnswer != null)
         {
-            module.GenerateProblemAndSolution();
+            ModuleManager.Instance.FinishModuleMock();
         }
     }
 

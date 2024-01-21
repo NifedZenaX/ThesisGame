@@ -1,5 +1,8 @@
 using System;
 using System.Collections.Generic;
+using UnityEngine;
+using UnityEngine.UI;
+using Random = System.Random;
 
 public class ForgotPasswordModule : BaseModule
 {
@@ -8,7 +11,27 @@ public class ForgotPasswordModule : BaseModule
 
     public override bool? CheckAnswer()
     {
-        throw new NotImplementedException();
+        string castedAnswer = answer.ToString();
+        string castedSolution = solution.ToString();
+
+        if (castedAnswer == null)
+        {
+            return null;
+        }
+
+        if (castedAnswer.Length == castedSolution.Length)
+        {
+            if (castedSolution.Equals(castedAnswer))
+            {
+                return true;
+            }
+            else
+            {
+                ResetAnswer();
+            }
+        }
+
+        return null;
     }
 
     public override void GenerateProblem()
@@ -17,7 +40,7 @@ public class ForgotPasswordModule : BaseModule
         TimeSpan start = TimeSpan.FromHours(0);
         TimeSpan end = TimeSpan.FromHours(23);
         int maxMins = (int)(end - start).TotalMinutes;
-        int mins = rand.Next(maxMins);
+        int mins = rand.Next(maxMins) / 5 * 5;
         time = start.Add(TimeSpan.FromMinutes(mins));
 
         hourDegree = time.Hours % 12 * 30 + time.Minutes * 0.5;
@@ -64,16 +87,72 @@ public class ForgotPasswordModule : BaseModule
 
     public override void LinkUIToLogic()
     {
-        throw new NotImplementedException();
+
+        // problem = List<object>() { string, double, double } (time, hourDegree, minuteDegree)
+        // solution = string
+        List<object> castedProblem = problem as List<object>;
+        string castedSolution = solution as string;
+
+        ForgotPasswordComponents fpc = gameModule.GetComponent<ForgotPasswordComponents>();
+        
+        foreach (Button btn in fpc.buttons)
+        {
+            btn.onClick.RemoveAllListeners();
+        }
+
+        Debug.Log(castedProblem[0]);
+        Debug.Log(castedSolution);
+
+        Vector3 handRotation = fpc.hourHand.transform.eulerAngles;
+        handRotation.z = (float)(double)castedProblem[1] * -1;
+        fpc.hourHand.transform.eulerAngles = handRotation;
+
+        handRotation = fpc.minuteHand.transform.eulerAngles;
+        handRotation.z = (float)(double)castedProblem[2] * -1;
+        fpc.minuteHand.transform.eulerAngles = handRotation;
+
+        for (int i = 0; i < fpc.buttons.Count; i++)
+        {
+            int idx = i;
+            if (int.TryParse(fpc.btnText[idx].text, out int btnNumber) == true)
+            {
+                fpc.buttons[idx].onClick.AddListener(delegate { SubmitAnswer(btnNumber); });
+            }
+            else
+            {
+                fpc.buttons[idx].onClick.AddListener(delegate { SubmitAnswer(-1); });
+            }
+        }
     }
 
     public override void ResetAnswer()
     {
-        throw new NotImplementedException();
+        answer = "";
+        gameModule.GetComponent<ForgotPasswordComponents>().inputField.text = "";
     }
 
     public override void SubmitAnswer(object answer)
     {
-        throw new NotImplementedException();
+        string castedAnswer = (string)this.answer;
+        int castedAddedAnswer = (int)answer;
+        ForgotPasswordComponents fpc = gameModule.GetComponent<ForgotPasswordComponents>();
+
+        // Backspace
+        if (castedAddedAnswer == -1)
+        {
+            if (castedAnswer.Length >= 1)
+            {
+                castedAnswer = castedAnswer.Substring(0, castedAnswer.Length - 1);
+            }
+        }
+
+        // Actual Button Number
+        else
+        {
+            castedAnswer += castedAddedAnswer.ToString();
+        }
+
+        this.answer = castedAnswer;
+        fpc.inputField.text = this.answer.ToString();
     }
 }
