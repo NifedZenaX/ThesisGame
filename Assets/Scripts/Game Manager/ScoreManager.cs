@@ -9,6 +9,7 @@ public class ScoreManager : MonoBehaviour
     [SerializeField] private int totalCustomers;
     [SerializeField] private TextMeshProUGUI customerText;
     private int currentSatisfiedCustomers = 0;
+    public GameObject finishPanel, closePanel;
 
     public static ScoreManager instance;
     private void Start()
@@ -30,13 +31,25 @@ public class ScoreManager : MonoBehaviour
         customerText.text = currentSatisfiedCustomers + "/" + totalCustomers;
         if(currentSatisfiedCustomers == totalCustomers)
         {
-            GameFinished();
+            GameFinished(true);
         }
     }
 
-    private void GameFinished()
+    public void GameFinished(bool targetReached)
     {
-        Debug.Log("All customers has been satisfied");
-        SceneManager.LoadScene(ButtonManager.MAIN_MENU_SCENE);
+        Time.timeScale = 0;
+        foreach (GameModule gm in ModuleManager.Instance.gameModules)
+        {
+            gm.gameObject.SetActive(false);
+        }
+
+        if (targetReached)
+        {
+            finishPanel.SetActive(true);
+        }
+        else
+        {
+            closePanel.SetActive(true);
+        }
     }
 }

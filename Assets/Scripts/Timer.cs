@@ -24,14 +24,23 @@ public class Timer : MonoBehaviour
                 second = 60;
             }
             second -= Time.deltaTime;
-            minuteText = (minute < 10) ? "0" + minute : minute.ToString();
-            secondText = (second < 10) ? "0" + (int)second : ((int)second).ToString();
+
+            if (Mathf.CeilToInt(second) == 60)
+            {
+                minuteText = (minute < 10) ? "0" + (minute + 1) : minute.ToString();
+                secondText = "00";
+            }
+            else
+            {
+                minuteText = (minute < 10) ? "0" + minute : minute.ToString();
+                secondText = (Mathf.CeilToInt(second) < 10) ? "0" + Mathf.CeilToInt(second) : Mathf.CeilToInt(second).ToString();
+            }
             timerText.text = minuteText + ":" + secondText;
         }
         else
         {
             //Time's up
-            Time.timeScale = 0;
+            ScoreManager.instance.GameFinished(false);
         }
     }
 }

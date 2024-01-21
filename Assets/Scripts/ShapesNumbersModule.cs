@@ -64,17 +64,15 @@ public class ShapesNumbersModule : BaseModule
                     // again, i didn't think this through pas mikirin game designnya, ini bukannya nnti angkanya bisa jomplang ya...? kayak 10 terus next numbernya ada 100.....
                     // oh well
                     int a = Random.Range(1, num1 * num2 - 2);
-                    int b = Random.Range(1, num1 * num2 - a);
-                    int c = num1 * num2 - a - b;
+                    int b = num1 * num2 - a;
 
                     buttonNumberList.Add(a);
                     buttonNumberList.Add(b);
-                    buttonNumberList.Add(c);
                     buttonNumberList.Add(num1);
                     buttonNumberList.Add(num2);
 
-                    // udah ada 5 angka, sekarang tinggal pasang 7 angka lain
-                    for (int i = 0; i < 7; i++)
+                    // udah ada 4 angka, sekarang tinggal pasang 8 angka lain
+                    for (int i = 0; i < 8; i++)
                     {
                         buttonNumberList.Add(Random.Range(2, 11));
                     }
@@ -92,9 +90,8 @@ public class ShapesNumbersModule : BaseModule
                     int factor1 = Random.Range(1, 11);
                     int result = factor1 * Random.Range(3, 11);
 
-                    int a = Random.Range(1, result - 1);
-                    int b = Random.Range(1, result - a);
-                    int c = result - a - b;
+                    int a = Random.Range(1, result);
+                    int b = result - a;
 
                     int factor2 = Random.Range(1, 11);
                     int factor3 = Random.Range(1, 11);
@@ -104,8 +101,8 @@ public class ShapesNumbersModule : BaseModule
                     buttonNumberList.Add(factor3);
                     buttonNumberList.Add(a);
                     buttonNumberList.Add(b);
-                    buttonNumberList.Add(c);
-                    for (int i = 0; i < 6; i++)
+
+                    for (int i = 0; i < 7; i++)
                     {
                         buttonNumberList.Add(Random.Range(1, 99));
                     }
@@ -126,10 +123,10 @@ public class ShapesNumbersModule : BaseModule
                 solution = castedProblem[0] + castedProblem[1] + castedProblem[2];
                 break;
             case Shape.Triangle:
-                solution = castedProblem[0] + castedProblem[1] + castedProblem[2];
+                solution = castedProblem[0] + castedProblem[1];
                 break;
             case Shape.Circle:
-                solution = new int[] { castedProblem[0], castedProblem[1], castedProblem[2] };
+                solution = new int[] { castedProblem[0], castedProblem[1] };
                 break;
         }
     }
@@ -173,9 +170,9 @@ public class ShapesNumbersModule : BaseModule
                     }
                 }
 
-            case Shape.Circle when castedAnswer.Count == 3:
+            case Shape.Circle when castedAnswer.Count == 2:
                 {
-                    int totalAnswer = castedAnswer[0] + castedAnswer[1] + castedAnswer[2];
+                    int totalAnswer = castedAnswer[0] + castedAnswer[1];
                     bool isCorrect = false;
                     foreach (int factor in (IEnumerable<int>)solution)
                     {
@@ -246,11 +243,33 @@ public class ShapesNumbersModule : BaseModule
         {
             // dapetin random index buttonnya
             int btnIdx = Random.Range(0, buttonListCopy.Count);
-            
+
             // 3 button pertama itu pasti dihighlight
-            if (i < 3)
+            switch (shape)
             {
-                buttonListCopy[btnIdx].highlighter.enabled = true;
+                case Shape.Square:
+                    if (i < 3)
+                    {
+                        buttonListCopy[btnIdx].highlighter.enabled = true;
+                        buttonListCopy[btnIdx].button.interactable = false;
+                    }
+                    break;
+                case Shape.Triangle:
+                    if (i < 2)
+                    {
+                        buttonListCopy[btnIdx].highlighter.enabled = true;
+                        buttonListCopy[btnIdx].button.interactable = false;
+                    }
+                    break;
+                case Shape.Circle:
+                    if (i < 3)
+                    {
+                        buttonListCopy[btnIdx].highlighter.enabled = true;
+                        buttonListCopy[btnIdx].button.interactable = false;
+                    }
+                    break;
+                default:
+                    break;
             }
 
             // sehabis dinyalain highlighter-nya, ubah tulisan text dari buttonnya

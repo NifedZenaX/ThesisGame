@@ -401,6 +401,27 @@ TextureImporter:
       indices: 
       edges: []
       weights: []
+    - serializedVersion: 2
+      name: button_cover
+      rect:
+        serializedVersion: 2
+        x: 159
+        y: 89
+        width: 124
+        height: 41
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 238ae934db3953841bcc844db3c63607
+      internalID: -229242231
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
     outline: []
     physicsShape: []
     bones: []
@@ -416,6 +437,7 @@ TextureImporter:
       radio_full: -2018546963
       button_1: 1069009954
       button_4: -82391603
+      button_cover: -229242231
       button_5: -1190042026
       button_3: -1934686995
       radio_body: -1974122211

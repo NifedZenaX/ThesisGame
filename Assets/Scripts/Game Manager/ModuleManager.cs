@@ -16,16 +16,26 @@ public class ModuleManager : MonoBehaviour
     #endregion
 
     public List<ModuleMapping.ModuleTypeEnum> moduleTypeEnumList { get; private set; }
+    public List<GameModule> gameModules;
     
     public void SpawnGameModule()
     {
         //TODO: Nanti hapus argument timer di function GetGameObjectFromPool
-        ModuleMapping.ModuleTypeEnum module = GetAvailableModuleTypeEnum();
-        ObjectPool.Instance.GetGameObjectFromPool(module.ToString(), 1);
+        //ModuleMapping.ModuleTypeEnum module = GetAvailableModuleTypeEnum();
+        //ObjectPool.Instance.GetGameObjectFromPool(module.ToString(), 1);
+
+        foreach (GameModule gm in gameModules)
+        {
+            gm.gameObject.SetActive(false);
+        }
+
+        int moduleIdx = Random.Range(0, gameModules.Count);
+        gameModules[moduleIdx].gameObject.SetActive(true);
     }
 
     public void FinishModuleMock()
     {
+        SpawnGameModule();
         ScoreManager.instance.AddSatisfiedCustomer();
     }
 
@@ -36,15 +46,13 @@ public class ModuleManager : MonoBehaviour
 
     private void Start()
     {
-        moduleTypeEnumList = new List<ModuleMapping.ModuleTypeEnum>();
-        moduleTypeEnumList.Add(ModuleMapping.ModuleTypeEnum.Wires);
-        moduleTypeEnumList.Add(ModuleMapping.ModuleTypeEnum.Module_Upgrade);
-        moduleTypeEnumList.Add(ModuleMapping.ModuleTypeEnum.Shapes_Numbers);
-        moduleTypeEnumList.Add(ModuleMapping.ModuleTypeEnum.Forgot_Password);
+        //moduleTypeEnumList = new List<ModuleMapping.ModuleTypeEnum>();
+        //moduleTypeEnumList.Add(ModuleMapping.ModuleTypeEnum.Wires);
+        ////moduleTypeEnumList.Add(ModuleMapping.ModuleTypeEnum.Module_Upgrade);
+        //moduleTypeEnumList.Add(ModuleMapping.ModuleTypeEnum.Shapes_Numbers);
+        //moduleTypeEnumList.Add(ModuleMapping.ModuleTypeEnum.Forgot_Password);
 
-        foreach (var item in moduleTypeEnumList)
-        {
-            Debug.Log(item.ToString());
-        }
+        Time.timeScale = 1;
+        SpawnGameModule();
     }
 }
