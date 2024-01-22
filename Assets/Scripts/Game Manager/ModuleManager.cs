@@ -35,8 +35,8 @@ public class ModuleManager : MonoBehaviour
 
     public void FinishModuleMock()
     {
-        SpawnGameModule();
         ScoreManager.instance.AddSatisfiedCustomer();
+        SpawnGameModule();
     }
 
     public ModuleMapping.ModuleTypeEnum GetAvailableModuleTypeEnum()

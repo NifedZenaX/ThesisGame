@@ -12,7 +12,7 @@ public class ScoreManager : MonoBehaviour
     public GameObject finishPanel, closePanel;
 
     public static ScoreManager instance;
-    private void Start()
+    private void Awake()
     {
         if(instance == null)
         {

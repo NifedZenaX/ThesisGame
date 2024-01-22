@@ -22,6 +22,19 @@ public class GameModule : MonoBehaviour
             ModuleManager.Instance.SpawnGameModule();
         }
 
+        if (module.GetType() == typeof(WiresModule))
+        {
+            if ((module.solution as List<WiresModule.WireNumber>) != null)
+            {
+                string debug = "";
+                foreach (WiresModule.WireNumber wn in module.solution as List<WiresModule.WireNumber>)
+                {
+                    debug += $"[number: {wn.number}, answer: {wn.isAnswer}]; ";
+                }
+                Debug.Log(debug);
+            }
+        }
+
         bool? checkAnswer = module.CheckAnswer();
         if (checkAnswer == true && checkAnswer != null)
         {
