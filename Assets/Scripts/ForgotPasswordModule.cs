@@ -106,11 +106,11 @@ public class ForgotPasswordModule : BaseModule
         Debug.Log(castedSolution);
 
         Vector3 handRotation = fpc.hourHand.transform.eulerAngles;
-        handRotation.z = (float)(double)castedProblem[1] * -1;
+        handRotation.z = (float)(double)castedProblem[1];
         fpc.hourHand.transform.eulerAngles = handRotation;
 
         handRotation = fpc.minuteHand.transform.eulerAngles;
-        handRotation.z = (float)(double)castedProblem[2] * -1;
+        handRotation.z = (float)(double)castedProblem[2];
         fpc.minuteHand.transform.eulerAngles = handRotation;
 
         for (int i = 0; i < fpc.buttons.Count; i++)
