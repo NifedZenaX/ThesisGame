@@ -68,9 +68,17 @@ public class ForgotPasswordModule : BaseModule
         tensMinute = minute / 10;
         onesMinute = minute % 10;
 
-        float gapDegree = Mathf.Abs((float) (minuteDegree - hourDegree));
-        gapDegree = (gapDegree == 0) ? 360 : gapDegree;
-        if (gapDegree >= 180)
+        double gapDegree;
+        if (minuteDegree >= 180)
+        {
+            gapDegree = 360 - minuteDegree + hourDegree;
+        }
+        else
+        {
+            gapDegree = minuteDegree + 360 - hourDegree;
+        }
+        Debug.Log("Total degree: " + gapDegree);
+        if (gapDegree >= 180 && gapDegree < 360)
         {
             solution = onesMinute.ToString() + tensMinute.ToString() + onesHour.ToString() + tensHour.ToString();
         }
