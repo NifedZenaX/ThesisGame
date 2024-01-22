@@ -43,8 +43,8 @@ public class ForgotPasswordModule : BaseModule
         int mins = rand.Next(maxMins) / 5 * 5;
         time = start.Add(TimeSpan.FromMinutes(mins));
 
-        hourDegree = time.Hours % 12 * 30 + time.Minutes * 0.5;
-        minuteDegree = time.Minutes * 6;
+        hourDegree = 360 - (time.Hours % 12 * 30 + time.Minutes * 0.5);
+        minuteDegree = 360 - (time.Minutes * 6);
 
         problem = new List<object>() { time.ToString(), hourDegree, minuteDegree };
     }
@@ -68,13 +68,15 @@ public class ForgotPasswordModule : BaseModule
         tensMinute = minute / 10;
         onesMinute = minute % 10;
 
-        if ((hourDegree - minuteDegree) >= 0)
+        float gapDegree = Mathf.Abs((float) (minuteDegree - hourDegree));
+        gapDegree = (gapDegree == 0) ? 360 : gapDegree;
+        if (gapDegree >= 180)
         {
             solution = onesMinute.ToString() + tensMinute.ToString() + onesHour.ToString() + tensHour.ToString();
         }
         else
         {
-            if (hourDegree < 180)
+            if (hourDegree > 180)
             {
                 solution = tensMinute.ToString() + onesMinute.ToString() + tensHour.ToString() + onesHour.ToString();
             }
