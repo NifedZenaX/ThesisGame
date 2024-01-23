@@ -287,6 +287,7 @@ public class ShapesNumbersModule : BaseModule
 
     public override void SubmitAnswer(object answer)
     {
+        Debug.Log("heh");
         ((List<int>)this.answer).Add((int)answer);
     }
 }
